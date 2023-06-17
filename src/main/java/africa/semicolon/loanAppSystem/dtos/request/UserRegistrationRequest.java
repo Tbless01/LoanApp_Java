@@ -9,7 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserRegistrationRequest {
-    private Long id;
     private String username;
     private String password;
     private UserRole role;

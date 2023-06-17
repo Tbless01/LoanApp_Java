@@ -1,7 +1,5 @@
 package africa.semicolon.loanAppSystem.data.models;
 
-// User.java
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,11 +21,22 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
-    private String password;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private RepaymentPreference repaymentPreference;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private LoanApplication loanApplication;
+
+//    @Column(nullable = false)
+//    private String password;
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    public void applyForLoan(){
+        LoanApplication newLoan = new LoanApplication();
+        this.loanApplication = newLoan;
+    }
 }
 
 

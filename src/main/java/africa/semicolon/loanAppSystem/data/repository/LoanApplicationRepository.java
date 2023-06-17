@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface LoanApplicationRepository extends JpaRepository<LoanApplication, Long> {
     List<LoanApplication> findByStatus(LoanApplicationStatus status);
-
+    LoanApplication findByCustomerName(String username);
 }

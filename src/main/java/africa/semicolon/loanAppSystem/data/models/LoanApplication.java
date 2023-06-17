@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -21,7 +23,8 @@ public class LoanApplication {
     private String customerName;
     private double loanAmount;
     private String purpose;
-    
+
     @Enumerated(EnumType.STRING)
     private LoanApplicationStatus status;
+    private LocalDateTime dateApplied;
 }
