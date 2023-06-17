@@ -27,12 +27,8 @@ public class LoanUserService implements UserService {
 
     private final UserRepository userRepository;
 
-//    private final ModelMapper modelMapper;
-
     @Override
     public UserRegistrationResponse register(UserRegistrationRequest userRegistrationRequest) throws UserRegistrationFailedException, UserAlreadyExistsException {
-//        User user = modelMapper.map(userRegistrationRequest, User.class);
-
         User user = checkIfUserAlreadyExist(userRegistrationRequest);
         Mapper.map(userRegistrationRequest, user);
         User savedUser = userRepository.save(user);
@@ -41,14 +37,6 @@ public class LoanUserService implements UserService {
             throw new UserRegistrationFailedException(String.format(USER_REGISTRATION_FAILED, userRegistrationRequest.getUsername()));
         return userRegistrationResponse(savedUser.getId());
     }
-
-//    @Override
-//    public void updateUserForLoan(String username) {
-//        User user = userRepository.findUserByUsername(username);
-//        user.applyForLoan();
-//        userRepository.save(user);
-//    }
-
 
     private User checkIfUserAlreadyExist(UserRegistrationRequest userRegistrationRequest) throws UserAlreadyExistsException {
         if (userExist(userRegistrationRequest.getUsername()))
@@ -81,10 +69,11 @@ public class LoanUserService implements UserService {
         UserResponse userResponse = buildUserResponse(user);
         return userResponse;
     }
+
     @Override
-    public boolean getLoanOfficerByRole(UserRole status) throws UserNotFoundException {
+    public boolean getLoanOfficerByRole(UserRole status) {
         var foundUser = userRepository.findAUsersByRole(status);
-        if(foundUser.getRole() == UserRole.LOAN_OFFICER) return true;
+        if (foundUser.getRole() == UserRole.LOAN_OFFICER) return true;
         return false;
     }
 
@@ -111,6 +100,11 @@ public class LoanUserService implements UserService {
         deleteResponse.setMessage(USER_DELETED_SUCCESSFULLY);
         deleteResponse.setId(id);
         return deleteResponse;
+    }
+
+    @Override
+    public void deleteAll() {
+        userRepository.deleteAll();
     }
 
     private static UserRegistrationResponse userRegistrationResponse(Long userId) {

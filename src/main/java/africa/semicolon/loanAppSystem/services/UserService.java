@@ -25,6 +25,7 @@ public interface UserService {
     boolean getLoanOfficerByRole(UserRole role) throws UserNotFoundException;
 
     DeleteResponse deleteUser(Long id);
+    void deleteAll();
 
 
 }

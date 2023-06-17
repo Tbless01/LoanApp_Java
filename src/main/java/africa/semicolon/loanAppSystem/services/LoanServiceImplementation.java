@@ -44,6 +44,11 @@ public class LoanServiceImplementation implements LoanService {
         return loanUpdate(loanApplication.getId());
     }
 
+    @Override
+    public void deleteAll() {
+        loanApplicationRepository.deleteAll();
+    }
+
     private void checkUserExistsWithUsername(LoanApplicationRequest loanRequest) throws UserNotFoundException {
         try {
             var foundUser = userService.getUserByUsername(loanRequest.getCustomerName());

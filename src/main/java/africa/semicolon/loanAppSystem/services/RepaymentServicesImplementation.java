@@ -1,6 +1,7 @@
 package africa.semicolon.loanAppSystem.services;
 
 import africa.semicolon.loanAppSystem.data.models.LoanApplicationStatus;
+import africa.semicolon.loanAppSystem.data.models.PaymentMethod;
 import africa.semicolon.loanAppSystem.data.models.RepaymentPreference;
 import africa.semicolon.loanAppSystem.data.repository.LoanApplicationRepository;
 import africa.semicolon.loanAppSystem.data.repository.RepaymentRepository;
@@ -23,8 +24,9 @@ public class RepaymentServicesImplementation implements RepaymentService {
 
     @Override
     public RepaymentResponse updateRepaymentReference(RepaymentPreferenceRequest repaymentPreferenceRequest) throws UserNotFoundException, UserStillHasARunningLoanException {
-        if (!checkIfLoanWasApproved(repaymentPreferenceRequest.getUsername()))
-            throw new UserStillHasARunningLoanException(KINDLY_WAIT_PATIENTLY_TO_GET_YOUR_LOAN_APPROVED);
+        if (repaymentPreferenceRequest.getPaymentMethod().getMethod().equalsIgnoreCase(PaymentMethod.CARD.getMethod()) || repaymentPreferenceRequest.getPaymentMethod().getMethod().equalsIgnoreCase(PaymentMethod.USSD_CODE.getMethod()) || repaymentPreferenceRequest.getPaymentMethod().getMethod().equalsIgnoreCase(PaymentMethod.BANK_TRANSFER.getMethod()))
+            if (!checkIfLoanWasApproved(repaymentPreferenceRequest.getUsername()))
+                throw new UserStillHasARunningLoanException(KINDLY_WAIT_PATIENTLY_TO_GET_YOUR_LOAN_APPROVED);
         RepaymentPreference repaymentPreference = new RepaymentPreference();
         Mapper.map(repaymentPreferenceRequest, repaymentPreference);
         RepaymentPreference repaymentPreferenceSaved = repaymentRepository.save(repaymentPreference);

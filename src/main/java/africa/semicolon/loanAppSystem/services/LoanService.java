@@ -9,4 +9,6 @@ import africa.semicolon.loanAppSystem.exceptions.UserStillHasARunningLoanExcepti
 public interface LoanService {
     LoanApplicationResponse applyForLoan(LoanApplicationRequest loanApplicationRequest) throws UserNotFoundException, UserStillHasARunningLoanException;
     UpdateResponse loanStatusUpdate(String name, LoanApplicationRequest loanApplicationRequest) throws UserNotFoundException, UserStillHasARunningLoanException;
+
+    void deleteAll();
 }
