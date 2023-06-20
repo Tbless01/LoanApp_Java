@@ -70,12 +70,12 @@ public class LoanUserService implements UserService {
         return userResponse;
     }
 
-    @Override
-    public boolean getLoanOfficerByRole(UserRole status) {
-        var foundUser = userRepository.findAUsersByRole(status);
-        if (foundUser.getRole() == UserRole.LOAN_OFFICER) return true;
-        return false;
-    }
+//    @Override
+//    public boolean getLoanOfficerByRole(UserRole status) {
+//        var foundUser = userRepository.findAUsersByRole(status);
+//        if (foundUser.getRole() == UserRole.LOAN_OFFICER) return true;
+//        return false;
+//    }
 
     @Override
     public List<UserResponse> getAllUsers() {

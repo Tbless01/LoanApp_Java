@@ -1,6 +1,5 @@
 package africa.semicolon.loanAppSystem.services;
 
-import africa.semicolon.loanAppSystem.data.models.User;
 import africa.semicolon.loanAppSystem.data.models.UserRole;
 import africa.semicolon.loanAppSystem.dtos.request.UserRegistrationRequest;
 import africa.semicolon.loanAppSystem.dtos.response.DeleteResponse;
@@ -11,22 +10,19 @@ import africa.semicolon.loanAppSystem.exceptions.UserNotFoundException;
 import africa.semicolon.loanAppSystem.exceptions.UserRegistrationFailedException;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
     UserRegistrationResponse register(UserRegistrationRequest userRegistrationRequest) throws UserRegistrationFailedException, UserAlreadyExistsException;
-//    void updateUserForLoan(String username);
-//    UpdateResponse updateProfile(UserUpdateRequest)
+
     UserResponse getUserById(Long id) throws UserNotFoundException;
 
     UserResponse getUserByUsername(String username) throws UserNotFoundException;
     List<UserResponse> getAllUsers();
     List<UserResponse> getUsersByRole(UserRole role);
-    boolean getLoanOfficerByRole(UserRole role) throws UserNotFoundException;
+//    boolean getLoanOfficerByRole(UserRole role) throws UserNotFoundException;
 
     DeleteResponse deleteUser(Long id);
     void deleteAll();
-
 
 }
 

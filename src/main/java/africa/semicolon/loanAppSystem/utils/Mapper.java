@@ -24,14 +24,13 @@ public class Mapper {
         loanApplication.setDateApplied(LocalDateTime.now());
     }
     public static void map(RepaymentPreferenceRequest repaymentPreferenceRequest, RepaymentPreference repaymentPreference){
-//        SecureRandom random = new SecureRandom();
         repaymentPreference.setBankName(repaymentPreferenceRequest.getBankName());
         repaymentPreference.setLoanAccountName(repaymentPreferenceRequest.getLoanAccountName());
         repaymentPreference.setPaymentAmount(repaymentPreferenceRequest.getPaymentAmount());
         repaymentPreference.setPaymentMethod(PaymentMethod.valueOf(repaymentPreferenceRequest.getPaymentMethod().name()));
         repaymentPreference.setUsername(repaymentPreferenceRequest.getUsername());
         repaymentPreference.setInterestRate((float) 0.15);
-        repaymentPreference.setReferenceNumber(UUID.randomUUID());
+        repaymentPreference.setReferenceNumber(repaymentPreferenceRequest.getReferenceNumber());
         repaymentPreference.setPaymentDate(LocalDateTime.now());
     }
     public static void map(LoanApplicationRequest loanApplicationRequest, User user) {

@@ -5,11 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -31,8 +29,6 @@ public class RepaymentPreference {
     private PaymentMethod paymentMethod;
 
     private float interestRate;
-
-    @UuidGenerator
-    private UUID referenceNumber;
+    private String referenceNumber;
 }
 

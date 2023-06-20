@@ -1,13 +1,9 @@
 package africa.semicolon.loanAppSystem.controllers;
 
 import africa.semicolon.loanAppSystem.dtos.request.LoanApplicationRequest;
-import africa.semicolon.loanAppSystem.dtos.request.UserRegistrationRequest;
 import africa.semicolon.loanAppSystem.dtos.response.LoanApplicationResponse;
 import africa.semicolon.loanAppSystem.dtos.response.UpdateResponse;
-import africa.semicolon.loanAppSystem.dtos.response.UserRegistrationResponse;
-import africa.semicolon.loanAppSystem.exceptions.UserAlreadyExistsException;
 import africa.semicolon.loanAppSystem.exceptions.UserNotFoundException;
-import africa.semicolon.loanAppSystem.exceptions.UserRegistrationFailedException;
 import africa.semicolon.loanAppSystem.exceptions.UserStillHasARunningLoanException;
 import africa.semicolon.loanAppSystem.services.LoanService;
 import lombok.AllArgsConstructor;

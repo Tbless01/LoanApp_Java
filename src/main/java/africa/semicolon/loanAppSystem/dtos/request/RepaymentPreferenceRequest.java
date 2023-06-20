@@ -17,8 +17,8 @@ public class RepaymentPreferenceRequest {
     private String loanAccountName;
     private String bankName;
     private LocalDateTime paymentDate;
+    private float interestRate;
     private BigDecimal paymentAmount;
     private PaymentMethod paymentMethod;
-    private float interestRate;
-    private UUID referenceNumber;
+    private String referenceNumber;
 }
