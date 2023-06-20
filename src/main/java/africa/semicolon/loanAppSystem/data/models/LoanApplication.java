@@ -1,6 +1,5 @@
 package africa.semicolon.loanAppSystem.data.models;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
